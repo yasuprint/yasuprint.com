@@ -40,6 +40,7 @@
   <input type="text" id="productName" placeholder="Product Name" required>
   <input type="number" id="productPrice" placeholder="Price" required>
   <textarea id="productDescription" placeholder="Product Description" required></textarea>
+  <input type="file" id="productImage" accept="image/*" required>
   <button type="submit">Upload Product</button>
 </form>
 
@@ -57,21 +58,34 @@
     const productName = document.getElementById('productName').value;
     const productPrice = document.getElementById('productPrice').value;
     const productDescription = document.getElementById('productDescription').value;
+    const productImageInput = document.getElementById('productImage');
 
-    const product = {
-      name: productName,
-      price: productPrice,
-      description: productDescription,
-      customerId: customerId,
-      status: "pending" // default pending
+    if (productImageInput.files.length === 0) {
+      alert('Please upload a product image.');
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function(event) {
+      const productImage = event.target.result; // Image Base64 String में
+
+      const product = {
+        name: productName,
+        price: productPrice,
+        description: productDescription,
+        image: productImage,
+        customerId: customerId,
+        status: "pending" // default pending
+      };
+
+      let products = JSON.parse(localStorage.getItem('products')) || [];
+      products.push(product);
+      localStorage.setItem('products', JSON.stringify(products));
+
+      alert('Product Uploaded Successfully! Waiting for Admin Approval.');
+      document.getElementById('productForm').reset();
     };
-
-    let products = JSON.parse(localStorage.getItem('products')) || [];
-    products.push(product);
-    localStorage.setItem('products', JSON.stringify(products));
-
-    alert('Product Uploaded Successfully! Waiting for Admin Approval.');
-    document.getElementById('productForm').reset();
+    reader.readAsDataURL(productImageInput.files[0]);
   });
 </script>
 
