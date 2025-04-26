@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Print Products</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        /* Header */
+        header {
+            background-color: #088178;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 24px;
+            color: purple;
+        }
+
+        nav .cart {
+            font-size: 20px;
+        }
+
+        /* Search and Filter */
+        .search-bar-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .search-bar-container input,
+        .search-bar-container select {
+            padding: 10px;
+            margin: 5px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .search-bar-container button {
+            padding: 10px 15px;
+            background-color: #088178;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .search-bar-container button:hover {
+            background-color: #06695b;
+        }
+
+        /* Product Section */
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            justify-content: center;
+        }
+
+        .product {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 300px;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+        }
+
+        .product h3 {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        .product .price {
+            color: #088178;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .product button {
+            background-color: #088178;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .product button:hover {
+            background-color: #06695b;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #088178;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        /* Media Query for Mobile Devices (max width 360px) */
+        @media (max-width: 360px) {
+            .search-bar-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-bar-container input,
+            .search-bar-container select,
+            .search-bar-container button {
+                width: 100%;
+                margin: 5px 0;
+            }
+
+            .product-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .product {
+                width: 90%;
+                margin-bottom: 20px;
+            }
+
+            nav .logo {
+                font-size: 18px;
+            }
+
+            nav .cart {
+                font-size: 16px;
+            }
+        }
+
+        /* Media Query for Tablets (max width 768px) */
+        @media (max-width: 768px) {
+            .product-container {
+                justify-content: space-evenly;
+            }
+
+            .product {
+                width: 45%;
+            }
+
+            nav .logo {
+                font-size: 20px;
+            }
+
+            nav .cart {
+                font-size: 18px;
+            }
+        }
+
+        /* Media Query for Laptops (max width 1024px) */
+        @media (max-width: 1024px) {
+            .product-container {
+                justify-content: space-between;
+            }
+
+            .product {
+                width: 30%;
+            }
+
+            nav .logo {
+                font-size: 22px;
+            }
+
+            nav .cart {
+                font-size: 18px;
+            }
+        }
+
+        /* Media Query for Large Screens (above 1024px) */
+        @media (min-width: 1025px) {
+            .product {
+                width: 22%; /* Fit more products in row on large screens */
+            }
+        }
+        /* Media Query for Mobile Devices (max width 360px) */
+@media (max-width: 360px) {
+    .search-bar-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-bar-container input,
+    .search-bar-container select,
+    .search-bar-container button {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    .product-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product {
+        width: 100%;  /* Ensure the product div takes full width on mobile */
+        margin-bottom: 20px;
+    }
+
+    nav .logo {
+        font-size: 18px;
+    }
+
+    nav .cart {
+        font-size: 16px;
+    }
+}
+/* Media Query for Mobile Devices (max width 360px) */
+@media (max-width: 360px) {
+    .search-bar-container {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px;
+    }
+
+    .search-bar-container input,
+    .search-bar-container select,
+    .search-bar-container button {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    .product-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product {
+        width: 100%; /* Ensure the product div takes full width on mobile */
+        margin-bottom: 20px;
+    }
+
+    nav .logo {
+        font-size: 18px;
+    }
+
+    nav .cart {
+        font-size: 16px;
+    }
+}
+
+/* Media Query for Tablets (max width 768px) */
+@media (max-width: 768px) {
+    .search-bar-container {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px;
+    }
+
+    .search-bar-container input,
+    .search-bar-container select {
+        width: 45%;
+    }
+
+    .search-bar-container button {
+        width: 45%;
+    }
+
+    .product-container {
+        justify-content: space-evenly;
+    }
+
+    .product {
+        width: 45%;
+    }
+
+    nav .logo {
+        font-size: 20px;
+    }
+
+    nav .cart {
+        font-size: 18px;
+    }
+}
+
+/* Media Query for Laptops (max width 1024px) */
+@media (max-width: 1024px) {
+    .search-bar-container {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px;
+    }
+
+    .search-bar-container input,
+    .search-bar-container select {
+        width: 30%;
+    }
+
+    .search-bar-container button {
+        width: 30%;
+    }
+
+    .product-container {
+        justify-content: space-between;
+    }
+
+    .product {
+        width: 30%;
+    }
+
+    nav .logo {
+        font-size: 22px;
+    }
+
+    nav .cart {
+        font-size: 18px;
+    }
+}
+
+/* Media Query for Large Screens (above 1024px) */
+@media (min-width: 1025px) {
+    .search-bar-container {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px;
+    }
+
+    .search-bar-container input,
+    .search-bar-container select {
+        width: 25%;
+    }
+
+    .search-bar-container button {
+        width: 25%;
+    }
+
+    .product {
+        width: 22%; /* Fit more products in row on large screens */
+    }
+}
+/* Add this to the existing <style> section in your code */
+
+    @keyframes backgroundColorAnimation {
+    0% {
+        background-color: brown; /* Initial color */
+    }
+    50% {
+        background-color: yellowgreen; /* Midway color */
+    }
+    100% {
+        background-color: orange; /* Final color */
+    }
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    animation: backgroundColorAnimation 5s infinite; /* 5 seconds animation that repeats infinitely */
+}
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Customized Print Products</h1>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">meshop.</div>
+        <div class="cart">🛒 Cart</div>
+    </nav>
+
+    <!-- Search and Filter -->
+    <div class="search-bar-container">
+        <input type="text" id="searchInput" placeholder="Search products..." oninput="filterProducts()">
+        <select id="sizeFilter" onchange="filterProducts()">
+            <option value="">Select Size</option>
+            <option value="Small">Small</option>
+            <option value="Medium">Medium</option>
+            <option value="Large">Large</option>
+        </select>
+        <button onclick="filterProducts()">Filter</button>
+    </div>
+
+    <!-- Products -->
+    <section class="product-container" id="productContainer">
+        <!-- Product 1 -->
+        <div class="product" data-size="Medium">
+            <a href="E:\MY DATA COCHING\e come 2\MOBILE 1 CRTERGROY.HTML">
+                <img src="https://www.99mobilecover.in/images/cover.png" alt="Mobile Cover">
+            </a>
+            <h3>Customized Mobile Cover</h3>
+            <p class="price">Starts at ₹99</p>
+            <button>Customize Now</button>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product" data-size="Large">
+            <img src="https://www.99mobilecover.in/images/T-Shirt.png" alt="T-shirt">
+            <h3>Customized T-Shirt</h3>
+            <p class="price">Starts at ₹199</p>
+            <button>Customize Now</button>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product" data-size="Small">
+            <img src="https://www.99mobilecover.in/images/Mug.png" alt="Mug">
+            <h3>Customized Mug</h3>
+            <p class="price">Starts at ₹149</p>
+            <button>Customize Now</button>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product" data-size="Medium">
+            <img src="https://www.99mobilecover.in/images/Keychain.png" alt="Keychain">
+            <h3>Customized Keychain</h3>
+            <p class="price">Starts at ₹49</p>
+            <button>Customize Now</button>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product" data-size="Large">
+            <img src="https://www.99mobilecover.in/images/Pillow.png" alt="Pillow">
+            <h3>Customized Pillow</h3>
+            <p class="price">Starts at ₹49</p>
+            <button>Customize Now</button>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product" data-size="Medium">
+            <img src="https://www.99mobilecover.in/images/Clock.png" alt="Clock">
+            <h3>Acrylic Photo Clock</h3>
+            <p class="price">Starts at ₹49</p>
+            <button>Customize Now</button>
+        </div>
+
+        <!-- Product 7 -->
+        <div class="product" data-size="Small">
+            <img src="https://www.99mobilecover.in/images/Wallet%20Card.png" alt="Wallet Card">
+            <h3>Wallet Card</h3>
+            <p class="price">Starts at ₹49</p>
+            <button>Customize Now</button>
+        </div>
+
+        <!-- Product 8 -->
+        <div class="product" data-size="Large">
+            <img src="https://www.99mobilecover.in/images/Wallet.png" alt="Wallet">
+            <h3>Wallet Combo</h3>
+            <p class="price">Starts at ₹49</p>
+            <button>Customize Now</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 meshop. All rights reserved.</p>
+        <p>Contact us: support@meshop.com</p>
+    </footer>
+
+    <script>
+        function filterProducts() {
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            const sizeFilter = document.getElementById('sizeFilter').value;
+            const products = document.querySelectorAll('.product');
+
+            products.forEach(product => {
+                const productName = product.querySelector('h3').textContent.toLowerCase();
+                const productSize = product.getAttribute('data-size');
+
+                const matchesSearch = productName.includes(searchInput);
+                const matchesSize = sizeFilter ? productSize === sizeFilter : true;
+
+                if (matchesSearch && matchesSize) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
+        
+    </script>
+</body>
+</html>
