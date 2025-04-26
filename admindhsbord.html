@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .admin-dashboard {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        a:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-dashboard">
+        <h2>Admin Dashboard</h2>
+        <h3>Manage Orders</h3>
+        <a href="add-order.html">Add Order</a>
+        <h3>Sellers</h3>
+        <table id="sellersTable">
+            <tr>
+                <th>Seller Name</th>
+                <th>Email</th>
+                <th>View Orders</th>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        // Sample Data for Sellers and Orders
+        const sellers = [
+            { id: 1, name: 'Seller 1', email: 'seller1@example.com' },
+            { id: 2, name: 'Seller 2', email: 'seller2@example.com' }
+        ];
+
+        // Handle Seller Table in Admin Dashboard
+        const sellersTable = document.getElementById('sellersTable');
+        sellers.forEach(seller => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${seller.name}</td>
+                <td>${seller.email}</td>
+                <td><a href="seller-dashboard.html?id=${seller.id}">View Orders</a></td>
+            `;
+            sellersTable.appendChild(row);
+        });
+    </script>
+</body>
+</html>
